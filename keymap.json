@@ -1,0 +1,133 @@
+// Place this content in your Zed keymap.json file
+// Access via Command Palette (cmd-shift-p or ctrl-shift-p) -> `zed: open keymap`
+[
+  // --- Editor Context (Vim Normal Mode) ---
+  {
+    "context": "Editor && vim_mode == normal && !vim_waiting",
+    "bindings": {
+      // --- Your Existing Bindings ---
+      // Dock/Panel Toggles
+      "space e": "project_panel::ToggleFocus", // Toggle Project Panel / Sidebar
+      "space t": "workspace::ToggleBottomDock", // Toggle Terminal/Panel (usually bottom)
+      "space g": "git_panel::ToggleFocus", // Toggle Git/SCM Panel
+      "space o": "outline_panel::ToggleFocus", // New: Toggle Outline Panel Focus
+      "space d": "debug_panel::ToggleFocus",
+      // File Finder / Search
+      "space space": "file_finder::Toggle",
+      "space s": "pane::DeploySearch",
+      // Tab / Pane Navigation & Management
+      "shift-l": "pane::ActivateNextItem",
+      "shift-h": "pane::ActivatePreviousItem",
+      "space b d": "pane::CloseActiveItem",
+      "space b o": "pane::CloseInactiveItems",
+      "space b l": "pane::CloseItemsToTheLeft",
+      "space b r": "pane::CloseItemsToTheRight",
+      "space b a": "pane::CloseAllItems",
+      "space |": "pane::SplitRight",
+      "space -": "pane::SplitDown",
+      "space w d": "pane::JoinAll",
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w l": "workspace::ActivatePaneRight",
+      // Language Features / Editing
+      "space c a": "editor::ToggleCodeActions",
+      "space /": "editor::ToggleComments",
+      "space a a": "assistant::InlineAssist",
+      // --- New Vim-like Bindings ---
+      "space f s": "workspace::Save",
+      "K": "editor::Hover",
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "g t": "pane::ActivateNextItem",
+      "g T": "pane::ActivatePreviousItem",
+      "] t": "pane::ActivateNextItem",
+      "[ t": "pane::ActivatePreviousItem",
+      "space =": "editor::Format",
+      "space y p": "workspace::CopyPath",
+      "space '": "workspace::NewCenterTerminal"
+    }
+  },
+  // --- Project Panel Context (Explorer/Sidebar File Tree) ---
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      // --- Your Existing Bindings ---
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      // "enter": "menu::Confirm", // Assuming you've tested and prefer Zed's default or removed this
+      "d": "project_panel::Trash",
+      "shift-d": "project_panel::Delete",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "r": "project_panel::Rename",
+      "n": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "shift-y": "workspace::CopyPath",
+      "shift-o": "project_panel::RevealInFileManager",
+      "shift-enter": "project_panel::OpenWithSystem",
+      "space e": "workspace::ToggleLeftDock", // Allow toggling self off
+      "l": "menu::Confirm",
+      "o": "menu::Confirm"
+      // --- New: Switch from Project Panel to Outline Panel ---
+      // Using Tab (common for cycling through UI elements)
+      // Alternative using a leader key sequence
+      // "space l": "workspace::FocusRightDock", // Mnemonic: space + l (move right)
+    }
+  },
+  // --- Outline Panel Context ---
+  // New context for when the Outline View is focused
+  {
+    "context": "OutlinePanel && !editing", // Or "outline_view && !editing" - check command palette for "Copy Context"
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "enter": "menu::Confirm", // To jump to the symbol in the editor
+      "l": "menu::Confirm", // Alternative for enter
+      "o": "menu::Confirm", // Alternative for enter
+      "space o": "outline_panel::ToggleFocus" // Allow toggling self off
+      // --- New: Switch from Outline Panel to Project Panel ---
+      // Using Shift-Tab (common for cycling back)
+      // Alternative using a leader key sequence
+      // "space h": "workspace::FocusLeftDock", // Mnemonic: space + h (move left)
+    }
+  },
+  {
+    "context": "DebugPanel && !editing", // Or "debug_view && !editing" - check command palette for "Copy Context"
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "enter": "menu::Confirm", // To jump to the symbol in the editor
+      "l": "menu::Confirm", // Alternative for enter
+      "o": "menu::Confirm", // Alternative for enter
+      "space d": "workspace::ToggleBottomDock", // Allow toggling self off
+      "d": "debugger::Stop",
+      "s": "debugger::Start"
+      // --- New: Switch from Debug Panel to Project Panel ---
+      // Using Shift-Tab (common for cycling back)
+      // Alternative using a leader key sequence
+      // "space h": "workspace::FocusLeftDock", // Mnemonic: space + h (move left)
+    }
+  },
+  // --- Editor Context (Visual Mode) ---
+  {
+    "context": "Editor && vim_mode == visual && !vim_waiting",
+    "bindings": {
+      "K": "editor::Hover"
+    }
+  },
+  // --- EmptyPane Context ---
+  {
+    "context": "EmptyPane",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space space": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space c r": "editor::Rename"
+    }
+  }
+]

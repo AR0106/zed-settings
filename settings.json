@@ -1,0 +1,53 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "icon_theme": "JetBrains New UI Icons (Light)",
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking"
+    },
+    "default_profile": "ask",
+    "always_allow_tool_actions": true,
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    }
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+  "restore_on_startup": "none",
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
+  "relative_line_numbers": true,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "lsp": {
+    "sourcekit-lsp": {
+      "binary": {
+        "path": "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
+      }
+    }
+  },
+  "languages": {
+    "Swift": {
+      "enable_language_server": true,
+      "language_servers": ["sourcekit-lsp"],
+      "formatter": "language_server",
+      "format_on_save": "on"
+    }
+  }
+}
