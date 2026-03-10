@@ -19,7 +19,7 @@
       "shift-l": "pane::ActivateNextItem",
       "shift-h": "pane::ActivatePreviousItem",
       "space b d": "pane::CloseActiveItem",
-      "space b o": "pane::CloseInactiveItems",
+      "space b o": "pane::CloseOtherItems",
       "space b l": "pane::CloseItemsToTheLeft",
       "space b r": "pane::CloseItemsToTheRight",
       "space b a": "pane::CloseAllItems",
@@ -45,8 +45,8 @@
       "[ t": "pane::ActivatePreviousItem",
       "space =": "editor::Format",
       "space y p": "workspace::CopyPath",
-      "space '": "workspace::NewCenterTerminal"
-    }
+      "space '": "workspace::NewCenterTerminal",
+    },
   },
   // --- Project Panel Context (Explorer/Sidebar File Tree) ---
   {
@@ -65,15 +65,14 @@
       "/": "project_panel::NewSearchInDirectory",
       "shift-y": "workspace::CopyPath",
       "shift-o": "project_panel::RevealInFileManager",
-      "shift-enter": "project_panel::OpenWithSystem",
+      "shift-enter": "workspace::OpenWithSystem",
       "space e": "workspace::ToggleLeftDock", // Allow toggling self off
       "l": "menu::Confirm",
-      "o": "menu::Confirm"
       // --- New: Switch from Project Panel to Outline Panel ---
       // Using Tab (common for cycling through UI elements)
       // Alternative using a leader key sequence
       // "space l": "workspace::FocusRightDock", // Mnemonic: space + l (move right)
-    }
+    },
   },
   // --- Outline Panel Context ---
   // New context for when the Outline View is focused
@@ -85,12 +84,12 @@
       "enter": "menu::Confirm", // To jump to the symbol in the editor
       "l": "menu::Confirm", // Alternative for enter
       "o": "menu::Confirm", // Alternative for enter
-      "space o": "outline_panel::ToggleFocus" // Allow toggling self off
+      "space o": "outline_panel::ToggleFocus", // Allow toggling self off
       // --- New: Switch from Outline Panel to Project Panel ---
       // Using Shift-Tab (common for cycling back)
       // Alternative using a leader key sequence
       // "space h": "workspace::FocusLeftDock", // Mnemonic: space + h (move left)
-    }
+    },
   },
   {
     "context": "DebugPanel && !editing", // Or "debug_view && !editing" - check command palette for "Copy Context"
@@ -102,32 +101,38 @@
       "o": "menu::Confirm", // Alternative for enter
       "space d": "workspace::ToggleBottomDock", // Allow toggling self off
       "d": "debugger::Stop",
-      "s": "debugger::Start"
+      "s": "debugger::Start",
       // --- New: Switch from Debug Panel to Project Panel ---
       // Using Shift-Tab (common for cycling back)
       // Alternative using a leader key sequence
       // "space h": "workspace::FocusLeftDock", // Mnemonic: space + h (move left)
-    }
+    },
   },
   // --- Editor Context (Visual Mode) ---
   {
     "context": "Editor && vim_mode == visual && !vim_waiting",
     "bindings": {
-      "K": "editor::Hover"
-    }
+      "K": "editor::Hover",
+    },
   },
   // --- EmptyPane Context ---
   {
     "context": "EmptyPane",
     "bindings": {
       "space e": "workspace::ToggleLeftDock",
-      "space space": "file_finder::Toggle"
-    }
+      "space space": "file_finder::Toggle",
+    },
   },
   {
     "context": "(VimControl && !menu)",
     "bindings": {
-      "space c r": "editor::Rename"
-    }
-  }
+      "space c r": "editor::Rename",
+    },
+  },
+  {
+    "context": "(ProjectPanel && !editing)",
+    "bindings": {
+      "o": "workspace::OpenWithSystem",
+    },
+  },
 ]
