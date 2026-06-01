@@ -7,6 +7,53 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "ollama": {
+      "context_window": 4096,
+      "api_url": "https://qwen3-5.tail6642fa.ts.net"
+    }
+  },
+  "soft_wrap": "editor_width",
+  "prettier": {
+    "allowed": true,
+  },
+  "auto_update_extensions": {
+    "java": false,
+  },
+  "context_servers": {
+    "skillsmcp": {
+      "command": "uvx",
+      "args": ["skillsmcp"],
+    },
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
+  "edit_predictions": {
+    "disabled_globs": ["*.org"],
+    "provider": "copilot",
+  },
+  "which_key": {
+    "enabled": true,
+  },
+  "semantic_tokens": "combined",
+  "document_symbols": "on",
+  "icon_theme": "Symbols Icon Theme",
   "vim": {
     "toggle_relative_line_numbers": false,
   },
@@ -19,16 +66,105 @@
     },
   },
   "agent": {
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "gemini-3.1-pro-preview",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-6-latest",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.2",
+        "enable_thinking": false,
+        "effort": "medium"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.2-codex",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "openai",
+        "model": "gpt-5.4",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "ollama",
+        "model": "qwen3.5:9b",
+        "enable_thinking": true
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-4.1",
+        "enable_thinking": false
+      }
+    ],
+    "profiles": {
+      "minimal": {
+        "name": "Minimal",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "skillsmcp": {
+            "tools": {
+              "read_skill_file": true,
+              "list_skills": true,
+              "activate_skill": true,
+            },
+          },
+        },
+      },
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "spawn_agent": true,
+          "thinking": true,
+          "update_plan": true,
+          "search_web": true,
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "skillsmcp": {
+            "tools": {
+              "read_skill_file": true,
+              "activate_skill": true,
+              "list_skills": true,
+            },
+          },
+        },
+      },
+    },
+    "dock": "right",
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "model": "gpt-5.2",
     },
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "effort": "medium",
+      "enable_thinking": true,
+      "provider": "openai",
+      "model": "gpt-5.4",
     },
     "default_profile": "ask",
     "model_parameters": [],
@@ -44,11 +180,17 @@
   "relative_line_numbers": "enabled",
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+    "light": "Min Light (Blurred)",
+    "dark": "Min Dark (Blurred)",
   },
   "languages": {
     "C": {
+      "format_on_save": "on",
+    },
+    "Swift": {
+      "enable_language_server": true,
+      "language_servers": ["sourcekit-lsp"],
+      "formatter": "language_server",
       "format_on_save": "on",
     },
   },
@@ -57,6 +199,11 @@
       "settings": {
         "jdk_auto_download": true,
       },
+    },
+  },
+  "dap": {
+    "Swift": {
+      "binary": "/opt/homebrew/Cellar/xcede/0.9.1/bin",
     },
   },
 }

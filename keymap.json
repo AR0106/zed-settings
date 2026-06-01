@@ -135,4 +135,16 @@
       "o": "workspace::OpenWithSystem",
     },
   },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space c a": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "g .": "editor::ToggleCodeActions"
+    }
+  }
 ]
